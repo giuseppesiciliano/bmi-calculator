@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'Arial', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'xl': '20px 20px 60px 15px rgba(0, 0, 0, 0.5)',
+                    }
+                },
+            },
+            variants: {},
+            plugins: [],
+        }
+    </script>
+</head>
+
+<body class="h-screen w-full bg-[#b3b9cb] flex justify-center items-center">
+
+    <!-- app -->
+    <div id="app" class="rounded-[30px] h-[660px] w-[350px] bg-white overflow-hidden shadow-[0_5px_15px_5px_rgba(0,0,0,0.70)]">
+
+        <!-- DISPLAY 1 -->
+        <div id="display1">
+
+            <div class="flex flex-col justify-center items-center m-7">
+                <div class="text-2xl font-bold">Calcolo del BMI</div>
+
+                <img src="img/weight-scale.png" alt="" class="max-w-full h-40 mt-4">
+
+                <p class="text-sm text-center mt-3 text-[#686868]">Inserisci la tua altezza e il tuo peso per determinare il tuo valore BMI <br> (Indice Massa Corporea)</p>
+            </div>
+
+            <hr>
+
+            <div class="input-container h-[180px] mt-4 flex flex-col items-center justify-around">
+                <div class="flex flex-col">
+                    <label for="height" class="font-bold">Altezza:</label>
+                    <div>
+                        <input id="height" type="number">
+                        <span class="text-[#686868] ml-3">cm</span>
+                    </div>
+                </div>
+    
+                <div class="flex flex-col">
+                    <label for="weight" class="font-bold">Peso:</label>
+                    <div>
+                        <input id="weight" type="number">
+                        <span class="text-[#686868] ml-3">kg</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-10">
+                <div id="forward-display" class="rounded-3xl inline-block px-24 py-3 mx-auto bg-[#cc302f] hover:bg-[#b42b2b] text-white font-bold cursor-pointer transition-colors duration-300" onclick="calculateBMI()">CALCOLA</div>
+            </div>
+
+        </div>
+
+        <!-- DISPLAY 2 -->
+        <div id="display2" class="bg-[#cc302f]">
+
+            <div id="back-display"><i class="fa-solid fa-chevron-left ml-5 my-7 text-white font-bold cursor-pointer"></i></div>
+
+            <div class="text-4xl text-white pt-5 ml-5">Il tuo risultato</div>
+
+            <div class="flex flex-col justify-center items-center">
+
+                <div class="border rounded-xl p-7 flex flex-col items-center bg-white mt-10 shadow-md">
+                    <span>Il tuo BMI è:</span>
+
+                    <div id="result" class="text-4xl text-[#cc302f]"></div>
+
+                    <div id="bmi-bar-container">
+                        <div id="bmi-bar">
+                            <!-- Tacche colorate -->
+                            <div class="mark" style="left: 50px;"></div>
+                            <div class="mark" style="left: 100px;"></div>
+                            <div class="mark" style="left: 150px;"></div>
+                            <div class="mark" style="left: 200px;"></div>
+                            <!-- Tacca BMI -->
+                            <div id="bmi-tack"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+
+            <p id="description" class="text-md text-center mx-5 mt-12 text-white"></p>
+
+            <div class="flex justify-center pt-7">
+                <button class="refresh-button h-12 w-12 bg-white rounded-xl hover:bg-[#eeeeee] transition-colors duration-300" onclick="window.location.reload();">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+
+            <div class="bg-[#cc302f] h-[200px]"></div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
